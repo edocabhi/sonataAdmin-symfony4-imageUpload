@@ -21,7 +21,7 @@ final class PropertyAdmin extends AbstractAdmin
         $datagridMapper
             ->add('id')
             ->add('Title')
-            ;
+        ;
     }
 
     protected function configureListFields(ListMapper $listMapper): void
@@ -64,7 +64,7 @@ final class PropertyAdmin extends AbstractAdmin
                     ])
                 ],
             ])
-            ;
+        ;
     }
 
     protected function configureShowFields(ShowMapper $showMapper): void
@@ -72,6 +72,6 @@ final class PropertyAdmin extends AbstractAdmin
         $showMapper
             ->add('id')
             ->add('Title')
-            ;
+        ;
     }
 }
