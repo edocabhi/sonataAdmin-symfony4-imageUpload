@@ -1,9 +1,12 @@
 
 ###> symfony/framework-bundle ###
+/.idea
+/.env
 /.env.local
 /.env.local.php
 /.env.*.local
 /public/bundles/
+/src/Migrations
 /var/
 /vendor/
 ###< symfony/framework-bundle ###
