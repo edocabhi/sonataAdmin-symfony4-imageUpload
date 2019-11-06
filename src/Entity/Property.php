@@ -11,7 +11,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Property
 {
-    const SERVER_PATH_TO_IMAGE_FOLDER = '/Users/abhishek/Documents/SANDBOX/sonatest/public/image';
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -30,7 +29,7 @@ class Property
      */
     private $imageFile;
 
-    private $file;
+    private $file; //unmapped field to hold image file i.e. field is not present in database
 
     public function getId(): ?int
     {
@@ -73,40 +72,4 @@ class Property
     {
         return $this->file;
     }
-
-//    /**
-//     * Manages the copying of the file to the relevant place on the server
-//     */
-//    public function upload()
-//    {
-//        dd($this->getImageFile());
-//        // the file property can be empty if the field is not required
-//        if (null === $this->getImageFile()) {
-//            return;
-//        }
-//
-//        // we use the original file name here but you should
-//        // sanitize it at least to avoid any security issues
-//
-//        // move takes the target directory and target filename as params
-//        $this->getImageFile()->move(
-//            self::SERVER_PATH_TO_IMAGE_FOLDER,
-//            $this->getImageFile()->getClientOriginalName()
-//        );
-//
-//        // set the path property to the filename where you've saved the file
-//        $this->imageFile = $this->getImageFile()->getClientOriginalName();
-//
-//        // clean up the file property as you won't need it anymore
-//        $this->setFile(null);
-//    }
-
-//    /**
-//     * @ORM\PreUpdate()
-//     */
-//    public function preUpdate()
-//    {
-//        $this->upload();
-//    }
-
 }
