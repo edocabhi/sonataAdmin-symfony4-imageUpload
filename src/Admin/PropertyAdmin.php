@@ -21,6 +21,7 @@ final class PropertyAdmin extends AbstractAdmin
         $datagridMapper
             ->add('id')
             ->add('Title')
+            ->add('imageFile')
         ;
     }
 
@@ -29,6 +30,7 @@ final class PropertyAdmin extends AbstractAdmin
         $listMapper
             ->add('id')
             ->add('Title')
+            ->add('imageFile', '<img src="https://via.placeholder.com/150" class="admin-preview" /><br>')
             ->add('_action', null, [
                 'actions' => [
                     'show' => [],
@@ -40,6 +42,11 @@ final class PropertyAdmin extends AbstractAdmin
 
     protected function configureFormFields(FormMapper $formMapper): void
     {
+        if (($this->getSubject()) && ($image = $this->getSubject()->getImageFile())) {
+            $imagePath = '/image/'.$image;
+        }else{
+            $imagePath =  'https://via.placeholder.com/150';
+        }
         $formMapper
 //            ->add('id')
             ->add('Title')
@@ -49,7 +56,7 @@ final class PropertyAdmin extends AbstractAdmin
                 // unmapped means that this field is not associated to any entity property
                 'mapped' => false,
                 'required' => false,
-
+                'help' => '<img src="'.$imagePath.'" class="admin-preview" /><br>',
                 // unmapped fields can't define their validation using annotations
                 // in the associated entity, so you can use the PHP constraint classes
                 'constraints' => [
@@ -72,6 +79,7 @@ final class PropertyAdmin extends AbstractAdmin
         $showMapper
             ->add('id')
             ->add('Title')
+            ->add('imageFile')
         ;
     }
 }
